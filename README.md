@@ -42,11 +42,14 @@ Beating Atari with Natural Language Guided Reinforcement Learning
   
 # Possible Project Directions
 
+## Rasa Core UI for Interactive Training
+Most of the data / training interaction with rasa is done through markdown files on the command line. It could be useful to build a UI that would allow non-coders to build up the training data (while the coders actually train the model etc). I think it owuld also be a great learning tool for people getting started with Rasa.
+
 ## Voight-Kampff Machine
 An interrogation dialogue game (the name comes from Blade Runner).
 
 [Video Clip](https://www.youtube.com/watch?v=Umc9ezAyJv0)
-
+[online test (multiple choice only](http://www.bfi.org.uk/are-you-a-replicant/)
 ## Text / Audio only game
 Look into
   - [Twisty Little Passages](https://www.amazon.com/Twisty-Little-Passages-Approach-Interactive/dp/0262633183) by Nick Motford. **A critical approach to interactive fiction, as literature and game.**

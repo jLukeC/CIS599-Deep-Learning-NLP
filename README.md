@@ -38,7 +38,9 @@ Beating Atari with Natural Language Guided Reinforcement Learning
 - Lesson 5 from Fast.ai:
   - NLP and Recurrent Neural Networks
 - [CartPole from OpenAI](https://openai.com/requests-for-research/#cartpole)
-  
+
+- Rasa directions chatbot:
+  - Would provide directions between locations and store information using rasa + gmaps api
   
 # Possible Project Directions
 

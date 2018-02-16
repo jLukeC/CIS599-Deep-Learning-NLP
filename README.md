@@ -12,11 +12,15 @@ Generating High-Quality and Informative Conversation Responses with Sequence-to-
 
 Deal or No Deal? End-to-End Learning for Negotiation Dialogues [[pdf]](arxiv.org/pdf/1706.05125.pdf)
 
+
 -----------------
 
 A Deep Reinforcement Learning Chatbot [[pdf]](arxiv.org/pdf/1801.06700.pdf)
 
 Word Based Dialog State Tracking with Recurrent Neural Networks [[pdf]](www.sigdial.org/workshops/conference15/proceedings/pdf/W14-4340.pdf)
+
+
+GloVe: Global Vectors for Word Representation [[pdf]](https://nlp.stanford.edu/pubs/glove.pdf)
 
 
 ## Papers to read

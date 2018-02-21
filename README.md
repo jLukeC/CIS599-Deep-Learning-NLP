@@ -48,6 +48,9 @@ Beating Atari with Natural Language Guided Reinforcement Learning
   
 # Possible Project Directions
 
+## Toxic Comment Classification Challenge
+[Identify and classify toxic online comments](https://conversationai.github.io/)
+
 ## Rasa Core UI for Interactive Training
 Most of the data / training interaction with rasa is done through markdown files on the command line. It could be useful to build a UI that would allow non-coders to build up the training data (while the coders actually train the model etc). I think it owuld also be a great learning tool for people getting started with Rasa.
 

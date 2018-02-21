@@ -29,7 +29,6 @@ def forward_backward_prop(X, labels, params, dimensions):
     ### Unpack network parameters (do not modify)
     ofs = 0
     Dx, H, Dy = (dimensions[0], dimensions[1], dimensions[2])
-
     W1 = np.reshape(params[ofs:ofs+ Dx * H], (Dx, H))
     ofs += Dx * H
     b1 = np.reshape(params[ofs:ofs + H], (1, H))
@@ -40,12 +39,28 @@ def forward_backward_prop(X, labels, params, dimensions):
 
     # Note: compute cost based on `sum` not `mean`.
     ### YOUR CODE HERE: forward propagation
-    raise NotImplementedError
+
+    
+    z_1 = np.matmul(X,W1) + b1 # first hidden layer altering input data using layer parameters
+    h = sigmoid(z_1) # first hidden layer activation
+    z_2 = np.matmul(h,W2) + b2 # second hidden layer altering data using layer parameters
+    y_hat = softmax(z_2) # second hidden layer output:  a matrix of computed class probabilities per input
+    cost = sum(-labels * np.log(y_hat))
+
     ### END YOUR CODE
 
     ### YOUR CODE HERE: backward propagation
-    raise NotImplementedError
-    ### END YOUR CODE
+    cost_gradient = y_hat - labels # cross entropy derivative: difference between estimated input classes and true classes
+    d1 = cost_gradient
+    d2 = np.matmul(cost_gradient,W2.T)
+    d3 = d2 * sigmoid_grad(h)
+    d4 = np.matmul(d3,W1.T)
+
+    gradW1, gradb1, gradW2, gradb2 = d1, d2, d3, d4
+    #cost_gradient = y_hat - y
+    #hidden_gradient = cost_gradient * W2.T
+    #hidden_gradient * H_sig_grad
+    #theta_gradient = hidden_gradient * W1.T
 
     ### Stack gradients (do not modify)
     grad = np.concatenate((gradW1.flatten(), gradb1.flatten(),
@@ -67,7 +82,6 @@ def sanity_check():
     labels = np.zeros((N, dimensions[2]))
     for i in xrange(N):
         labels[i, random.randint(0,dimensions[2]-1)] = 1
-
     params = np.random.randn((dimensions[0] + 1) * dimensions[1] + (
         dimensions[1] + 1) * dimensions[2], )
 

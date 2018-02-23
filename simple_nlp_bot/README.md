@@ -1,0 +1,1 @@
+Based on the article : [Do-it-yourself NLP for bot developers](https://medium.com/rasa-blog/do-it-yourself-nlp-for-bot-developers-2e2da2817f3d)

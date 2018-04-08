@@ -12,27 +12,40 @@ from sklearn.metrics import accuracy_score
 
 
 train = pd.read_csv('data/train.csv')
-labels= ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
+test = pd.read_csv('data/train.csv')
+
+labels = ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
 
 
-tfidf_vectorizer = CountVectorizer()
-train_tfidfs = tfidf_vectorizer.fit_transform(train["comment_text"])
+vectorizer = CountVectorizer()
+train_vectorized = vectorizer.fit_transform(train["comment_text"])
+test_vectorized = vectorizer.transform(test["comment_text"])
 
 
-label_raw_accuracy_score = {}
-label_roc_auc_score = {}
 
-for label in labels:
-    X = train_tfidfs
-    y = train[label]
-    mnb = MultinomialNB()
-    y_pred = mnb.fit(X,y).predict(X)
+train_submission = train.copy()
+test_submission = test.copy()
 
-    label_raw_accuracy_score[label] = accuracy_score(y,y_pred)
-    label_roc_auc_score[label] = roc_auc_score(y,y_pred)
-    
-    print(label,label_raw_accuracy_score[label])
-    print(label,label_roc_auc_score[label])
 
-print(label_raw_accuracy_score)
-print(label_roc_auc_score)
+def train_naive_bayes(X_train,y_trains,X_test,y_tests):
+
+    for label in labels:
+        y_train = y_trains[label]
+        y_test = y_tests[label]
+        
+        mnb = MultinomialNB()
+        mnb.fit(X_train,y_train)
+        y_pred_train = mnb.predict(X_train)
+        y_pred_test = mnb.predict(X_test)
+        
+        train_submission[label] = y_pred_train
+        test_submission[label] = y_pred_test
+         
+        print(label,roc_auc_score(y_train,y_pred_train))
+
+train_naive_bayes(train_vectorized,train[labels],test_vectorized,test[labels])
+
+print("Training Total ROC AUC Avg:",roc_auc_score(train_submission[labels],train[labels]))
+
+train_submission.to_csv("submissions/train_naive_bayes.csv")
+test_submission.to_csv("submissions/test_naive_bayes.csv")

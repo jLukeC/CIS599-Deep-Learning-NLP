@@ -1,0 +1,218 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "entities": [
+          {
+            "start": 18, 
+            "end": 22, 
+            "value": "math", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "I'm looking for a math class"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 8, 
+            "end": 24, 
+            "value": "computer science", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "show me computer science classes"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 5, 
+            "end": 12, 
+            "value": "english", 
+            "entity": "course_type"
+          }, 
+          {
+            "start": 34, 
+            "end": 37, 
+            "value": "2pm", 
+            "entity": "course_time"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "what english classes are there at 2pm"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 24, 
+            "end": 30, 
+            "value": "4:30pm", 
+            "entity": "course_time"
+          }, 
+          {
+            "start": 8, 
+            "end": 12, 
+            "value": "math", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "show me math classes at 4:30pm"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 8, 
+            "end": 11, 
+            "value": "all", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "show me all classes"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 30, 
+            "end": 34, 
+            "value": "10am", 
+            "entity": "course_time"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "what classes are available at 10am?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 14, 
+            "end": 20, 
+            "value": "CIS530", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "tell me about CIS530"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 8, 
+            "end": 14, 
+            "value": "CIS120", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "what is CIS120?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 12, 
+            "end": 19, 
+            "value": "MATH240", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "who teaches MATH240?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 13, 
+            "end": 19, 
+            "value": "CIS521", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "What time is CIS521 taught?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 19, 
+            "end": 32, 
+            "value": "deep learning", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "what courses teach deep learning"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 19, 
+            "end": 25, 
+            "value": "CIS371", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "what topics are in CIS371?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 18, 
+            "end": 29, 
+            "value": "linguistics", 
+            "entity": "course_type"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "tell me about the linguistics classes at penn"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 24, 
+            "end": 30, 
+            "value": "CIS120", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "which professor teaches CIS120?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 24, 
+            "end": 31, 
+            "value": "STAT430", 
+            "entity": "course_code"
+          }
+        ], 
+        "intent": "course_detail", 
+        "text": "when is the midterm for STAT430?"
+      }, 
+      {
+        "entities": [
+          {
+            "start": 5, 
+            "end": 15, 
+            "value": "statistics", 
+            "entity": "course_type"
+          }, 
+          {
+            "start": 31, 
+            "end": 34, 
+            "value": "5pm", 
+            "entity": "course_time"
+          }
+        ], 
+        "intent": "course_search", 
+        "text": "what statistics classes are at 5pm"
+      }
+    ], 
+    "entity_synonyms": [], 
+    "regex_features": []
+  }
+}

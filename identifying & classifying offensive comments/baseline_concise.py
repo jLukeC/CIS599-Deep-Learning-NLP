@@ -29,6 +29,9 @@ print("Training Total ROC AUC Avg:", roc_auc_score(train_submission[labels],trai
 # Predicting test data - should be scored sparingly
 test_submission[labels] = mdl.predict(test["comment_text"])
 
+print("Test Total ROC AUC Avg:", roc_auc_score(test_submission[labels],test[labels]))
+
+
 # Saving predictions
-train.to_csv("submissions/train_naive_bayes.csv")
-test.to_csv("submissions/test_naive_bayes.csv")
+train_submission.to_csv("submissions/train_naive_bayes.csv")
+test_submission.to_csv("submissions/test_naive_bayes.csv")

@@ -8,7 +8,7 @@ from sklearn.pipeline import Pipeline
 
 
 train = pd.read_csv('data/train.csv')
-test = pd.read_csv('data/train.csv')
+test = pd.read_csv('data/test.csv')
 train_submission = train.copy()
 test_submission = test.copy()
 

@@ -7,6 +7,14 @@
         "location", 
         "people"
       ]
+    }, 
+    "action_search_restaurants": {
+      "slots": [
+        "matches"
+      ]
+    }, 
+    "action_suggest": {
+      "slots": []
     }
   }, 
   "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble", 

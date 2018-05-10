@@ -27205,3 +27205,107 @@
  - utter_ack_makereservation
 * thankyou
  - utter_goodbye
+## Generated Story 1856980074608274548
+* greet
+* inform{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_location
+* inform{"location": "philadelphia"}
+    - slot{"location": "philadelphia"}
+    - utter_ask_numpeople
+* inform{"people": "five"}
+    - slot{"people": "five"}
+    - utter_ask_price
+* inform{"price": "lo"}
+    - slot{"price": "lo"}
+    - utter_ask_moreupdates
+* deny
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - slot{"matches": "papi's pizza place"}
+    - action_suggest
+* thankyou
+    - export
+## Generated Story -6535570886886281889
+* inform{"cuisine": "italian", "location": "philadelphia"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "philadelphia"}
+    - utter_ask_numpeople
+* inform{"people": "5"}
+    - slot{"people": "5"}
+    - utter_ask_price
+* inform{"price": "lo"}
+    - slot{"price": "lo"}
+    - utter_ask_moreupdates
+* affirm
+* 
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - slot{"matches": "[u'1234 Locust St', u'Philadelphia, PA 19107'] located at Little Nonna's"}
+    - utter_ack_dosearch
+    - utter_on_it
+    - action_suggest
+    - export
+## Generated Story 1470626339077879847
+* inform
+    - utter_ask_location
+* inform{"location": "new york city"}
+    - slot{"location": "new york city"}
+    - utter_ask_numpeople
+* inform{"price": "lo", "people": "6"}
+    - slot{"people": "6"}
+    - slot{"price": "lo"}
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - action_suggest
+    - export
+## Generated Story -659674006566656839
+* thankyou{"cuisine": "great"}
+    - slot{"cuisine": "great"}
+* inform{"cuisine": "german", "location": "nyc"}
+    - slot{"cuisine": "german"}
+    - slot{"location": "nyc"}
+    - utter_ask_numpeople
+* inform{"price": "hi", "people": "five"}
+    - slot{"people": "five"}
+    - slot{"price": "hi"}
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - slot{"matches": "Cafe Katja located at 79 Orchard St New York, NY 10002"}
+    - action_suggest
+    - export
+## Generated Story -2269538095820562537
+* inform{"cuisine": "italian", "people": "6"}
+    - slot{"cuisine": "italian"}
+    - slot{"people": "6"}
+    - utter_ask_location
+* inform{"location": "philadelphia"}
+    - slot{"location": "philadelphia"}
+    - utter_ask_price
+* inform{"price": "lo"}
+    - slot{"price": "lo"}
+    - utter_ask_moreupdates
+* affirm
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - slot{"matches": "Little Nonna's located at 1234 Locust St Philadelphia, PA 19107"}
+    - action_suggest
+* thankyou
+    - export
+## Generated Story 3821195264241525233
+* inform{"cuisine": "italian", "location": "philadelphia"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "philadelphia"}
+    - utter_ask_numpeople
+* inform{"people": "6"}
+    - slot{"people": "6"}
+    - utter_ask_price
+* inform{"price": "hi"}
+    - slot{"price": "hi"}
+    - utter_ask_moreupdates
+* 
+    - utter_ack_dosearch
+    - action_search_restaurants
+    - slot{"matches": "Little Nonna's located at 1234 Locust St Philadelphia, PA 19107"}
+    - action_suggest
+    - export

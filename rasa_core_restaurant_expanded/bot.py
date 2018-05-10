@@ -1,3 +1,4 @@
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -6,6 +7,7 @@ from __future__ import unicode_literals
 import argparse
 import logging
 import warnings
+import pprint
 
 from rasa_core import utils
 from rasa_core.actions import Action
@@ -18,7 +20,8 @@ from rasa_core.policies.memoization import MemoizationPolicy
 logger = logging.getLogger(__name__)
 
 
-
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 from rasa_core.policies.keras_policy import KerasPolicy
 
@@ -50,10 +53,18 @@ class RestaurantPolicy(KerasPolicy):
 
 
 # System
-    
+
+import yelp_search
 class RestaurantAPI(object):
-    def search(self, info):
-        return "papi's pizza place"
+    def search(self, cuisine, location, price):
+        result = yelp_search.query_api(cuisine, location)
+        display_location = ""
+        if result:
+            display_location = result["location"]["display_address"]
+            display_name = result["name"]
+            return "{} located at {}".format(display_name, " ".join(display_location))
+
+        return "Nothing found!"
 
 
 class ActionSearchRestaurants(Action):
@@ -63,7 +74,8 @@ class ActionSearchRestaurants(Action):
     def run(self, dispatcher, tracker, domain):
         dispatcher.utter_message("looking for restaurants")
         restaurant_api = RestaurantAPI()
-        restaurants = restaurant_api.search(tracker.get_slot("cuisine"))
+        #print(tracker.slots)
+        restaurants = restaurant_api.search(tracker.get_slot("cuisine"), tracker.get_slot("location"), tracker.get_slot("price"))
         return [SlotSet("matches", restaurants)]
 
 
@@ -98,6 +110,28 @@ def train_dialogue(domain_file="restaurant_domain.yml",
     return agent
 
 
+def train_dialogue_online(domain_file="restaurant_domain.yml",
+                   model_path="models/dialogue",
+                   training_data_file="data/babi_stories.md"):
+
+    interpreter = RasaNLUInterpreter("models/nlu/default/current")
+
+
+    agent = Agent.load("models/dialogue", interpreter=interpreter)
+    
+    agent.train_online(
+            training_data_file,
+            input_channel=ConsoleInputChannel(),
+            max_history=3,
+            epochs=400,
+            batch_size=100,
+            validation_split=0.2
+    )
+
+    agent.persist(model_path)
+    return agent
+
+
 def train_nlu():
     from rasa_nlu.converters import load_data
     from rasa_nlu.config import RasaNLUConfig
@@ -110,6 +144,17 @@ def train_nlu():
 
     return model_directory
 
+
+def run_nlu():
+    interpreter = RasaNLUInterpreter("models/nlu/default/current")
+
+    while True:
+        t = raw_input("Message for NLU\n:>")
+        d = interpreter.parse(t.decode('utf8'))
+        pprint.pprint(d, indent=2)
+    return
+
+    
 
 def run(serve_forever=True):
     interpreter = RasaNLUInterpreter("models/nlu/default/current")
@@ -128,18 +173,22 @@ if __name__ == '__main__':
 
     parser.add_argument(
             'task',
-            choices=["train-nlu", "train-dialogue", "run"],
+            choices=["train-nlu","run-nlu", "train-dialogue", "train-dialogue-online", "run"],
             help="what the bot should do - e.g. run or train?")
     task = parser.parse_args().task
 
     # decide what to do based on first parameter of the script
     if task == "train-nlu":
         train_nlu()
+    if task == "run-nlu":
+        run_nlu()
     elif task == "train-dialogue":
         train_dialogue()
+    elif task == "train-dialogue-online":
+        train_dialogue_online()
     elif task == "run":
         run()
     else:
-        warnings.warn("Need to pass either 'train-nlu', 'train-dialogue' or "
+        warnings.warn("Need to pass either 'train-nlu', 'run-nlu', 'train-dialogue', 'train-dialogue-online' or "
                       "'run' to use the script.")
         exit(1)
